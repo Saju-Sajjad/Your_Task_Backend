@@ -17,7 +17,7 @@ app.use(express.json());
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Enable CORS
-app.use(cors({ credentials: true, origin: "http://localhost:5173/" }));
+app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 app.use(cookieParser());
 app.use('/api/users', userRoutes); // User routes
 app.use('/api/auth', authRoutes); // Authentication routes
