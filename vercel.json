@@ -1,9 +1,21 @@
 {
+    "name": "my-vercel-project",
     "version": 2,
-    "routes" : [
-        {
-            "src": "/(.*)",
-            "dest": "/"
-        }
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "api/$1.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "index.js"
+      }
     ]
-}
+  }
+  
