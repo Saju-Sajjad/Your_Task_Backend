@@ -5,8 +5,8 @@ import {verifyToken,getUser, getAllUser, deleteUser } from '../controllers/userC
 const router = express.Router();
 
 
-router.get('/user', verifyToken, getUser);
-router.get('/users', getAllUser);
-router.delete('/users/:userId', deleteUser);
+router.get('/', verifyToken, getUser);
+router.get('/', getAllUser);
+router.delete('/:userId', deleteUser);
 
 export default router;

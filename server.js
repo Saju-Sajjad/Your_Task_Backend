@@ -20,6 +20,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(cors({ credentials: true, origin: "https://your-task-web.vercel.app" }));
 
 
+
 app.use(cookieParser());
 app.use('/api/users', userRoutes); // User routes
 app.use('/api/auth', authRoutes); // Authentication routes

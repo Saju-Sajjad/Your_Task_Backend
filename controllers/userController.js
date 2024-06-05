@@ -1,21 +1,27 @@
 import User from "../models/User.js";
-const JWT_SECRET = process.env.JWT_SECRET;
+// verifyToken.js
 import jwt from "jsonwebtoken";
-export const verifyToken = (req, res, next) => {
-  const accessToken = req.cookies.token;
+import dotenv from 'dotenv';
 
-  if (!accessToken) {
+dotenv.config();
+const JWT_SECRET = process.env.JWT_SECRET;
+
+export const verifyToken = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) {
     return res.status(401).json({ message: "Unauthorized: No token provided" });
   }
 
-  jwt.verify(accessToken, JWT_SECRET, (err, decoded) => {
+  jwt.verify(token, JWT_SECRET, (err, decoded) => {
     if (err) {
+      console.error("Token verification error:", err);
       return res.status(403).json({ message: "Unauthorized: Invalid token" });
     }
     req.user = decoded;
     next();
   });
-}
+};
+
 
 
 export const getAllUser = async (req, res) => {

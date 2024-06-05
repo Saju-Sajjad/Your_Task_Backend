@@ -1,6 +1,6 @@
 import express from 'express';
 import { createTask, getTasks, getTaskById, updateTask, deleteTask } from '../controllers/taskController.js';
-import { verifyToken } from '../controllers/userController.js'; // Import the verifyToken middleware
+import { verifyToken } from '../controllers/userController.js';
 
 const router = express.Router();
 
@@ -8,10 +8,10 @@ const router = express.Router();
 router.use(verifyToken);
 
 // Routes for tasks
-router.post('/tasks', createTask);
-router.get('/tasks', getTasks);
-router.get('/tasks/:id', getTaskById);
-router.put('/tasks/:id', updateTask);
-router.delete('/tasks/:id', deleteTask);
+router.post('/', createTask);
+router.get('/', getTasks);
+router.get('/:id', getTaskById);
+router.put('/:id', updateTask);
+router.delete('/:id', deleteTask);
 
 export default router;
